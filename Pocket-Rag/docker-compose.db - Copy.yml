@@ -1,0 +1,55 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: pocket-rag-qdrant
+    ports:
+      - "6333:6333"
+    environment:
+      - QDRANT_API_KEY=pocket-rag-secret
+    volumes:
+      - qdrant_storage:/qdrant/storage
+      - qdrant_snapshots:/qdrant/snapshots
+    networks:
+      - pocket-rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  qdrant_storage:
+    driver: local
+  qdrant_snapshots:
+    driver: local
+
+networks:
+  pocket-rag-network:
+    driver: bridge
+
+# ============================================
+# USAGE COMMANDS:
+# ============================================
+# 
+# Start containers (detached mode):
+#   docker compose --file docker-compose.db.yml up -d
+#
+# View logs:
+#   docker compose --file docker-compose.db.yml logs -f qdrant
+#
+# Stop containers:
+#   docker compose --file docker-compose.db.yml down
+#
+# Check container health:
+#   docker ps | grep pocket-rag
+#
+# Access Qdrant:
+#   http://localhost:6333
+#
+# Data persists in Docker volumes:
+#   - qdrant_storage (main database)
+#   - qdrant_snapshots (backups)
+#
+# ============================================

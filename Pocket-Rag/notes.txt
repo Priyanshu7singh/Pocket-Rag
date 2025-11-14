@@ -1,0 +1,17 @@
+frameworks that can used to build:
+langchain : https://www.langchain.com/
+
+llms that can be used: 
+llama(will be best for text based tasks):  https://www.llama.com/docs/community-support-and-resources/
+
+ollama: https://ollama.com/search
+for cpu/gpu inferencing
+ 
+Stable diffusion:  https://stabledifffusion.com/
+for ui
+
+Deepsite: https://huggingface.co/spaces/enzostvs/deepsite?utm_source=sp_auto_dm&utm_referrer=sp_auto_dm
+
+vaibhav sinisty: roadmap to ai generalist
+https://brook-kileskus-376.notion.site/Roadmap-to-Becoming-an-AI-Generalist-224e5cd597ea80e4a404dc9585094dfd
+
